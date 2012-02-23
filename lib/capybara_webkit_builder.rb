@@ -9,7 +9,7 @@ module CapybaraWebkitBuilder
     when /mingw32/
       system("#{binary} --version")
     else
-      system("which #{make}")
+      system("which #{binary}")
     end
   end
   
