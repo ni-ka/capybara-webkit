@@ -6,7 +6,7 @@ module CapybaraWebkitBuilder
 
   def has_binary?(binary)
     case RbConfig::CONFIG['host_os']
-    when /mingw32/, /jruby/
+    when /mingw32/, /mswin32/
       system("#{binary} --version")
     else
       system("which #{binary}")
@@ -29,7 +29,7 @@ module CapybaraWebkitBuilder
       system("#{qmake_bin} -spec linux-g++")
     when /freebsd/
       system("#{qmake_bin} -spec freebsd-g++")
-    when /mingw32/, /jruby/
+    when /mingw32/, /mswin32/
       system("#{qmake_bin} -spec win32-g++")
     else
       system("#{qmake_bin} -spec macx-g++")
@@ -42,7 +42,7 @@ module CapybaraWebkitBuilder
 
   def path_to_binary
     case RbConfig::CONFIG['host_os']
-    when /mingw32/
+    when /mingw32/, /mswin32/
       'src/debug/webkit_server.exe'
     else
       'src/webkit_server'
